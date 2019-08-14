@@ -3,6 +3,8 @@
     "gh-pages": "^2.1.1"
   },
   "homepage": "https://onkeltem.github.io/datamincer-dubna-20-status/",
-  "deploy": "gh-pages -d build",
-  "predeploy": "composer run dm deck generate"
+  "scripts": {
+    "deploy": "gh-pages -d build",
+    "predeploy": "composer run dm deck generate"
+  }
 }

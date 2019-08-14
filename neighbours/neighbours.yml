@@ -50,3 +50,9 @@ generators:
                 destination:
                   field: concat
                   items: ['@vars.build_path', '/index.html']
+          styles:
+            field: copyfile
+            source: 'styles.css'
+            destination:
+              field: concat
+              items: ['@vars.build_path', '/', 'styles.css']
