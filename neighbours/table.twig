@@ -1,0 +1,37 @@
+<html lang="en-US">
+
+  <head>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>
+      Increase Site Performance With Hardware-Accelerated CSS  </title>
+
+    <style>
+      {{ params.styles | raw }}
+    </style>
+  </head>
+  <body>
+    <div class="yard">
+      {% for building, entrances in fields.elems %}
+        <div data-building="{{loop.index}}" class="building">
+          {% for entrance, floors in entrances %}
+            <div data-entrance="{{loop.index}}" class="entrance" title="Подъезд {{ entrance }}">
+              {% for floor, flats in floors | reverse(true) %}
+                <div data-floor="{{loop.index}}" class="floor">
+                  {% for flat in flats %}
+                    <div data-flat="{{loop.index}}" class="flat {{ flat.status == "1" ? "active" }}"
+                         title="{{ building }}, п. {{ entrance }}, эт. {{ floor }}, кв. {{ flat.flat }}">
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endfor %}
+            </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+vars:
+  build_path:
+    field: concat
+    items: ['build/']
+  prefix: 'Neighbours'
+  name: '@bundle.name'
+
+generators:
+  buildTable:
+    workers:
+      - worker: csv
+        data:
+          field: file
+          path: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQHoB0gawm-RYIN7Y60YkQyn2QEgWtGgQHbn7Y8n-CotSJJhylC4H0u7BOa4h35C44W64qteEqyc37B/pub?gid=0&single=true&output=csv'
+        columns:
+          building:
+            name: Дом
+            autofill: true
+          type:
+            name: Тип
+            autofill: true
+          entrance: Подъезд
+          floor: Этаж
+          flat: Квартира
+          status:
+            name: Статус
+            default: 0
+      - worker: group
+        from: row
+        by: [ ]
+      - worker: process
+        fields:
+          elems:
+            field: groupby
+            list: '@row.items'
+            by: [building, entrance, floor]
+          table:
+            field: chain
+            items:
+              - field: twig
+                template:
+                  field: file
+                  path: table.twig
+                params:
+                  styles:
+                    field: file
+                    path: styles.css
+              - field: savefile
+                contents: '@input'
+                destination:
+                  field: concat
+                  items: ['@vars.build_path', '/index.html']
