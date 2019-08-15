@@ -6,20 +6,22 @@
   </head>
   <body>
     <div class="yard">
-      {% for building, entrances in fields.elems %}
+      {% for building, dirs in fields.elems %}
         <div data-building="{{loop.index}}" class="building">
-          {% for entrance, floors in entrances %}
-            <div data-entrance="{{loop.index}}" class="entrance" title="Подъезд {{ entrance }}">
-              {% for floor, flats in floors | reverse(true) %}
-                <div data-floor="{{loop.index}}" class="floor">
-                  {% for flat in flats %}
-                    <div data-flat="{{loop.index}}" class="flat {{ flat.status == "1" ? "active" }}"
-                         title="{{ building }}, п. {{ entrance }}, эт. {{ floor }}, кв. {{ flat.flat }}">
-                    </div>
-                  {% endfor %}
-                </div>
-              {% endfor %}
-            </div>
+          {% for dir, entrances in dirs %}
+            {% for entrance, floors in dir == 'ltr' ? entrances : entrances | reverse(true) %}
+              <div data-entrance="{{loop.index}}" class="entrance" title="Подъезд {{ entrance }}">
+                {% for floor, flats in floors | reverse(true) %}
+                  <div data-floor="{{loop.index}}" class="floor">
+                    {% for flat in flats %}
+                      <div data-flat="{{loop.index}}" class="flat {{ flat.status == "1" ? "active" }}"
+                           title="{{ building }}, п. {{ entrance }}, эт. {{ floor }}, кв. {{ flat.flat }}">
+                      </div>
+                    {% endfor %}
+                  </div>
+                {% endfor %}
+              </div>
+            {% endfor %}
           {% endfor %}
         </div>
       {% endfor %}

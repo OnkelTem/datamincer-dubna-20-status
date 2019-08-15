@@ -16,8 +16,8 @@ generators:
           building:
             name: Дом
             autofill: true
-          type:
-            name: Тип
+          dir:
+            name: Направление
             autofill: true
           entrance: Подъезд
           floor: Этаж
@@ -33,7 +33,7 @@ generators:
           elems:
             field: groupby
             list: '@row.items'
-            by: [building, entrance, floor]
+            by: [building, dir, entrance, floor]
           table:
             field: chain
             items:
@@ -56,3 +56,9 @@ generators:
             destination:
               field: concat
               items: ['@vars.build_path', '/', 'styles.css']
+          image:
+            field: copyfile
+            source: 'oak.svg'
+            destination:
+              field: concat
+              items: ['@vars.build_path', '/', 'oak.svg']
