@@ -1,17 +1,22 @@
 html, body, .yard {
   height: 100%;
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
+
 body {
   background: #847AD0;
-  padding: 0;
-  margin: 1vw;
+  padding: 2vw;
 }
+
 .yard {
   position: relative;
   height: 60vw;
-  background: #3D3478;
   transform: translateZ(0);
+  overflow: hidden;
+  background: #3D3478 url('oak.svg') no-repeat center 40%;
+  background-size: 20%;
 }
 
 .building {
@@ -19,41 +24,57 @@ body {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-around;
-  width: 45vw;
+  align-items: center;
+  width: 36vw;
+  height: 10vw;
   position: absolute;
   background: #695BD0;
-  box-shadow: 5px 5px 5px -2px rgba(0,0,0,0.42);
+  box-shadow: 0.3vw 0.3vw 0.3vw -0.1vw rgba(0,0,0,0.42);
 }
 
 [data-building="1"] {
-  bottom: 1vw;
-  left: 1vw;
-  transform: rotate(-90deg) translate(18.5vw, -18.5vw);
+  bottom: 0;
+  left: 0;
+  transform: rotate(-90deg) translate(18vw, -10vw);
 }
 
 [data-building="2"] {
-  top: 1vw;
-  left: 1vw;
-  atransform: rotate(-0deg) translate(1vw, 1vw);
+  top: 0;
+  left: 0;
+  transform: rotate(0deg) translate(3vw, 3vw);
 }
 
 [data-building="3"] {
-  top: 1vw;
-  right: 1vw;
-  atransform: rotate(-0deg) translate(52vw, 1vw);
+  top: 0;
+  right: 0;
+  transform: rotate(0deg) translate(-3vw, 3vw);
 }
 
 [data-building="4"] {
-  bottom: 1vw;
-  right: 1vw;
-  transform: rotate(90deg) translate(-18.5vw, -18.5vw);
+  bottom: 0;
+  right: 0;
+  transform: rotate(90deg) translate(-18vw, -10vw);
 }
 
 [data-building="5"] {
-  bottom: 1vw;
-  left: 28vw;
+  bottom: 0;
+  left: 0;
+  transform: rotate(0deg) translate(31vw, -5vw);
 }
 
+/* Roofs */
+[data-building]:after {
+  background: #FFDC5A;
+  position: absolute;
+  height: 2vw;
+  left: 0;
+  top: 0;
+  margin-left: -5%;
+  content: "";
+  width: 110%;
+  transform: rotate(0deg) translate(0, -2.3vw);
+  clip-path: polygon(6% 0, 94% 0%, 100% 100%, 0% 100%);
+}
 
 .entrance {
   display: flex;
@@ -66,12 +87,13 @@ body {
   height: 8vw;
   cursor: pointer;
   transition-duration: 0.2s;
+  z-index: 1;
 }
 
 .entrance:hover {
   transform: scale(1.4);
   background: #695BD0;
-  box-shadow: 5px 5px 5px -2px rgba(0,0,0,0.42);
+  box-shadow: 0.3vw 0.3vw 0.3vw -0.1vw rgba(0,0,0,0.42);
 }
 
 .floor {
@@ -99,5 +121,5 @@ body {
 }
 
 .flat.active {
-  background: #F3D155;
+  background: #FFDC5A;
 }
