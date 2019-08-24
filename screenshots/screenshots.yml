@@ -1,0 +1,36 @@
+vars:
+  name: '@bundle.name'
+  build_path:
+    field: makedir
+    path:
+      field: concat
+      items: ['build/', '@vars.name']
+  sizes:
+    field: value
+    value: ['150x150', '278x278', '576x576']
+  orig:
+    field: concat
+    items: ['@bundle.name', '/', 'screenshot.png']
+  screenshots:
+    field: each
+    source: '@vars.sizes'
+    do:
+      field: chain
+      source: '@input'
+      items:
+        - field: concat
+          items: ['@vars.build_path', '/', 'screenshot_', '@source', '.png']
+        - field: exec
+          exec:
+            field: concat
+            items: ['@vars.name', '/', 'aspectpad']
+          params:
+            - '-a'
+            - 1
+            - '-p'
+            - '#847AD0'
+            - '@vars.orig'
+            - '@input'
+        - field: exec
+          exec: 'convert'
+          params: ['@../input', '-gravity', 'center', '-crop', '58x58%+0+0', '-resize', '@source', '@../input']

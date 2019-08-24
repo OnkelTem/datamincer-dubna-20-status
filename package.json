@@ -4,7 +4,7 @@
   },
   "homepage": "https://onkeltem.github.io/datamincer-dubna-20-status/",
   "scripts": {
-    "deploy": "gh-pages -d build",
-    "predeploy": "composer run dm deck generate"
+    "deploy": "gh-pages -d build/neighbours",
+    "predeploy": "composer run html"
   }
 }

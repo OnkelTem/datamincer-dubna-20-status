@@ -12,7 +12,8 @@
   "type": "project",
   "minimum-stability": "dev",
   "scripts": {
-    "dm": "./vendor/bin/dm-dm --base=./"
+    "html": "./vendor/bin/dm-dm --base=./ --filter=neighbours deck generate",
+    "screenshots": "./vendor/bin/dm-dm --base=./ --filter=screenshots deck generate"
   },
   "repositories": [
     {
@@ -34,15 +35,10 @@
     {
       "type": "git",
       "url": "git@bitbucket.org:datamincer/plugins.git"
-    },
-    {
-      "type": "git",
-      "url": "git@bitbucket.org:datamincer/crowdanki.git"
     }
   ],
   "require": {
     "datamincer/dm": "dev-master",
-    "datamincer/plugins": "dev-master",
-    "datamincer/crowdanki": "dev-master"
+    "datamincer/plugins": "dev-master"
   }
 }

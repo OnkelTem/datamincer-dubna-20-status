@@ -1,9 +1,10 @@
 vars:
+  name: '@bundle.name'
   build_path:
     field: concat
-    items: ['build/']
+    items: ['build/', '@vars.name']
   prefix: 'Neighbours'
-  name: '@bundle.name'
+
 
 generators:
   buildTable:
