@@ -12,8 +12,8 @@
   "type": "project",
   "minimum-stability": "dev",
   "scripts": {
-    "html": "vendor/bin/dm-dm --base=./ --filter=neighbours deck generate",
-    "screenshots": "vendor/bin/dm-dm --base=./ --filter=screenshots deck generate"
+    "html": "vendor/bin/dm --base=./ --filter=neighbours unit generate",
+    "screenshots": "vendor/bin/dm --base=./ --filter=screenshots unit generate"
   },
   "repositories": [
     {
@@ -26,7 +26,7 @@
     },
     {
       "type": "git",
-      "url": "git@bitbucket.org:datamincer/dm.git"
+      "url": "git@bitbucket.org:datamincer/launcher.git"
     },
     {
       "type": "git",
@@ -42,7 +42,7 @@
     }
   ],
   "require": {
-    "datamincer/dm": "dev-master",
+    "datamincer/launcher": "dev-master",
     "datamincer/plugins": "dev-master",
     "datamincer/google": "dev-master"
   }
