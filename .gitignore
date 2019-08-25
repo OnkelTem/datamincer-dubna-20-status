@@ -5,3 +5,4 @@ composer.lock
 export/
 node_modules/
 yarn.lock
+private/

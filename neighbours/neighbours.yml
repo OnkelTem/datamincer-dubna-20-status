@@ -5,14 +5,17 @@ vars:
     items: ['build/', '@vars.name']
   prefix: 'Neighbours'
 
-
 generators:
   buildTable:
     workers:
-      - worker: csv
-        data:
+      - worker: googlespreadsheet
+        name: '@bundle.name'
+        credentials:
           field: file
-          path: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQHoB0gawm-RYIN7Y60YkQyn2QEgWtGgQHbn7Y8n-CotSJJhylC4H0u7BOa4h35C44W64qteEqyc37B/pub?gid=0&single=true&output=csv'
+          path: 'private/credentials.json'
+          format: json
+        spreadsheetId: '1SBMpbZBKsD0nEPxfWYC5PuwyQTTmw4aIrgbxfuROKq0'
+        range: 'List'
         columns:
           building:
             name: Дом

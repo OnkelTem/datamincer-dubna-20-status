@@ -35,10 +35,15 @@
     {
       "type": "git",
       "url": "git@bitbucket.org:datamincer/plugins.git"
+    },
+    {
+      "type": "git",
+      "url": "git@bitbucket.org:datamincer/google.git"
     }
   ],
   "require": {
     "datamincer/dm": "dev-master",
-    "datamincer/plugins": "dev-master"
+    "datamincer/plugins": "dev-master",
+    "datamincer/google": "dev-master"
   }
 }
